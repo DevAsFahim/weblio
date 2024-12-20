@@ -1,19 +1,19 @@
 import express from 'express';
 import { AuthController } from './auth.controller';
 import validateRequest from '../../middlewares/validateRequest';
-import { UserValidation } from '../user/user.validation';
+import { AuthValidation } from './auth.validation';
 
 const router = express.Router();
 
 router.post(
   '/register',
-  validateRequest(UserValidation.createUserValidationSchema),
+  validateRequest(AuthValidation.registerValidationSchema),
   AuthController.register,
 );
 
 router.post(
   '/login',
-  // validateRequest(UserValidation.createUserValidationSchema),
+  validateRequest(AuthValidation.loginValidationSchema),
   AuthController.loginUser,
 );
 
