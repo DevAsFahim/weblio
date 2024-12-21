@@ -17,12 +17,12 @@ const loginUser = async (payload: Partial<IUser>) => {
 
   // check if user exists
   if (!user) {
-    throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid credentials');
+    throw new AppError(StatusCodes.UNAUTHORIZED, 'User is not found.');
   }
 
   // check if user is blocked
   if (user.isBlocked) {
-    throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid credentials');
+    throw new AppError(StatusCodes.UNAUTHORIZED, 'User is blocked.');
   }
 
   // check if password matches
